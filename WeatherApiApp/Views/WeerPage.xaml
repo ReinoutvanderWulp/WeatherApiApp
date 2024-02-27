@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:WeatherApiApp.ViewModels"
+             xmlns:micro="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
+             x:DataType="viewmodel:APIViewModel"
+             x:Class="WeatherApiApp.Views.WeerPage"
+             Title="Weersvoorspelling">
+    <Grid BackgroundColor="{AppThemeBinding Light={StaticResource Wit}, Dark={StaticResource Blauw}}"
+          RowDefinitions="Auto,Auto,*">
+        <Label  Text="Weersvoorspellingen voor de komende week"
+                FontSize="Large"
+                Grid.Row="0"
+                HorizontalOptions="Center" />
+        <Button Text="Toon grafiek"
+                Command="{Binding WeerOpvragenCommand}"
+                Grid.Row="1" />
+        <ScrollView Grid.Row="2">
+            <micro:ChartView Chart="{Binding Grafiek}" />
+        </ScrollView>
+    </Grid>
+</ContentPage>
